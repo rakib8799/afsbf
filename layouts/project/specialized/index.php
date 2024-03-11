@@ -89,6 +89,10 @@ if (isset($_POST['submit'])) {
                     <div class="card">
                         <div class="card-body">
                             <div class="">
+                                <!-- <h3 class="text-center"><?php echo $title; ?></h3>
+                                <pre class="text-center">Poor kids shouldn't be deprived of modern education.
+                                                ___Arfan</pre>
+                                <p><?php echo $details; ?></p> -->
                                 <h1 class="mb-4 text-primary">Specialized <span class="">Children Hospital</span></h1>
                                 <p class="mb-4">Thousand of unprivileged, orphan, distressed, victim and street children will get full-free specialized medical treatment.</p>
                                 <p><span class="fw-bold">Place:</span> Balipara Road, Darirampur, Trishal, Mymensingh-2220, Bangladesh.</p>

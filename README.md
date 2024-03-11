@@ -1,3 +1,0 @@
-# charity-foundation
-# afsbf
-# afsbf
