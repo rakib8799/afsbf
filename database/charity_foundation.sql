@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2024 at 05:59 PM
+-- Generation Time: Mar 13, 2024 at 12:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -37,6 +37,13 @@ CREATE TABLE `comments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `project_id`, `comment`, `user_name`, `user_email`, `user_image`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Good Project', 'Mehedi Khan Rakib', 'mkrakib328@gmail.com', '65efb7f73e761.jpeg', '2024-03-12 02:03:35', '2024-03-12 02:03:35');
 
 -- --------------------------------------------------------
 
@@ -85,6 +92,31 @@ INSERT INTO `projects` (`id`, `title`, `details`, `image`, `image_gallery`, `cre
 (4, 'Rural Women Empowerment', 'In Bangladesh, opportunity for poor women is very rare. We work with volunteers to help educate them to understand what they can do to be more independent and contribute to the family. We create job in Jute mils and garments to help them to get back in to jobs.', '4.jpg', '[\"7.webp\",\"8.webp\",\"9.webp\",\"10.webp\"]', '2024-03-11 16:41:15', '2024-03-11 16:41:15'),
 (5, 'Sponsor an Orphan', 'As part of our program, we organise accommodation, food and education for orphan child. We are proud that we are able to give them the opportunity every child should have. You can be the next person to sponsor an orphan.\r\n\r\nSponsor an Orphan Just $ 20 /Month. No Admin cost \r\nSponsor an orphan for just $ 20 a month. Orphan sponsorship involves providing adequate income for the orphan to secure necessities of food, clothing, education, and health care. Giving them a better future! You have the right to contact regularly with sponsored orphan or ultra-poor children. We work voluntarily, there is no Admin cost like other charities. With trust, 100 % goes to beneficiary children.', '5.jpg', '[\"11.webp\",\"12.webp\",\"13.webp\",\"14.webp\",\"15.webp\",\"16.webp\"]', '2024-03-11 16:44:00', '2024-03-11 16:44:00');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stripe_payment`
+--
+
+CREATE TABLE `stripe_payment` (
+  `id` int(11) NOT NULL,
+  `fullname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `currency` varchar(10) NOT NULL,
+  `amount` double(10,2) NOT NULL,
+  `transaction_id` varchar(50) NOT NULL,
+  `payment_status` varchar(25) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `stripe_payment`
+--
+
+INSERT INTO `stripe_payment` (`id`, `fullname`, `email`, `title`, `currency`, `amount`, `transaction_id`, `payment_status`, `created_at`) VALUES
+(8, 'MK Rakib', 'mkrakib328@gmail.com', 'Quick Donation-pi_3OtdyWGR1Myktj2w0f94352f', 'usd', 500.00, 'pi_3OtdyWGR1Myktj2w0f94352f', 'succeeded', '2024-03-13 04:39:49');
+
 --
 -- Indexes for dumped tables
 --
@@ -108,6 +140,12 @@ ALTER TABLE `projects`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `stripe_payment`
+--
+ALTER TABLE `stripe_payment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -115,19 +153,25 @@ ALTER TABLE `projects`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `donation`
 --
 ALTER TABLE `donation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `stripe_payment`
+--
+ALTER TABLE `stripe_payment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

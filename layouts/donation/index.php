@@ -1,22 +1,23 @@
 <?php require_once('../../constants/set_names.php'); ?>
-<?php require_once('../../database/connection.php') ?>
+<!-- <?php require_once('../../database/connection.php') ?> -->
 <?php include_once('../linker.php') ?>
 
 <?php
-if (isset($_POST['submit'])) {
-    extract($_POST);
-    $timestamps = date("Y-m-d h:i:s", time());
+// if (isset($_POST['submit'])) {
+//     extract($_POST);
+//     $timestamps = date("Y-m-d h:i:s", time());
 
-    $insert_sql = "INSERT INTO `donation`(`amount`,`currency`,`status`,`created_at`) VALUES ('$donate','$currency','Pending','$timestamps')";
-    $run_insert_qry = mysqli_query($conn, $insert_sql);
+//     $insert_sql = "INSERT INTO `donation`(`amount`,`currency`,`status`,`created_at`) VALUES ('$donate','$currency','Pending','$timestamps')";
+//     $run_insert_qry = mysqli_query($conn, $insert_sql);
 
-    if ($run_insert_qry) {
-        echo "<p class='text-success text-bold text-center fs-5 mt-3'>Donation is successfully submitted</p>";
-        header("location: ../checkout");
-    } else {
-        echo "<p class='text-danger text-bold text-center fs-5 mt-3'>No data is inserted</p>";
-    }
-}
+//     if ($run_insert_qry) {
+//         echo "<p class='text-success text-bold text-center fs-5 mt-3'>Donation is successfully submitted</p>";
+//         header("location: ../checkout");
+//     } else {
+//         echo "<p class='text-danger text-bold text-center fs-5 mt-3'>No data is inserted</p>";
+//     }
+// }
+// 
 ?>
 
 <body>
@@ -85,11 +86,34 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
             </div>
-            <div class="row g-4">
-                <div class="col-md-9 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="<?php echo ($ROOT . '/assets/img/payment/1.png') ?>" alt="SSLCommerz-Pay-With-logo-All-Size-05-1536x797.png">
+            <div class="row g-2 mt-5">
+                <h3>We accept following payment methods</h3>
+                <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="row mb-4">
+                        <div class="col-md-2">
+                            <img class="img-fluid" src="<?php echo ($ROOT . '/assets/img/payment/1.png') ?>" alt="" style="min-width: 12vw">
+                        </div>
+                        <div class="col-md-2">
+                            <img class="img-fluid" src="<?php echo ($ROOT . '/assets/img/payment/2.png') ?>" alt="" style="min-width: 12vw">
+                        </div>
+                        <div class="col-md-2">
+                            <img class="img-fluid" src="<?php echo ($ROOT . '/assets/img/payment/3.png') ?>" alt="" style="min-width: 12vw">
+                        </div>
+                        <div class="col-md-2">
+                            <img class="img-fluid" src="<?php echo ($ROOT . '/assets/img/payment/4.png') ?>" alt="" style="min-width: 12vw">
+                        </div>
+                        <div class="col-md-2">
+                            <img class="img-fluid" src="<?php echo ($ROOT . '/assets/img/payment/5.png') ?>" alt="" style="min-width: 12vw">
+                        </div>
+                        <!-- <div class="col-md-2">
+                            <img class="img-fluid" src="<?php echo ($ROOT . '/assets/img/payment/6.png') ?>" alt="" style="max-height: 20vh;">
+                        </div> -->
+                    </div>
+                    <div>
+                        <a href="<?php echo ($ROOT . '/layouts/checkout') ?>" class="btn-donate mt-3">Checkout</a>
+                    </div>
                 </div>
-                <div class="col-md-3 d-flex align-items-center wow fadeInUp" data-wow-delay="0.1s">
+                <!-- <div class="col-md-3 d-flex align-items-center wow fadeInUp" data-wow-delay="0.1s">
                     <form action="" method="post">
                         <div class="mt-3">
                             <label for="donate">Donate Now</label>
@@ -102,9 +126,9 @@ if (isset($_POST['submit'])) {
                                 <option value="USD">US DOLLAR</option>
                             </select>
                         </div>
-                        <input type="submit" value="Donate" name="submit" class="btn-style mt-3" style="background: #ff6d02">
+                        <input type="submit" value="Donate" name="submit" class="btn-donate mt-3">
                     </form>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
