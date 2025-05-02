@@ -1,20 +1,34 @@
-/.phpunit.cache
+# Node
 /node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
+/npm-debug.log
+/yarn-error.log
+
+# Laravel
 /vendor
 .env
-.env.backup
-.env.production
-.phpactor.json
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
-/.fleet
+.env.*
+/storage/*.key
+/storage/logs
+/storage/framework
+/public/storage
+/public/build
+/public/hot
+/public/mix-manifest.json
+/public/assets
+
+# PHPUnit
+/.phpunit.cache
+/.phpunit.result.cache
+
+# IDEs
 /.idea
 /.vscode
+/.fleet
+
+# Homestead
+Homestead.json
+Homestead.yaml
+
+# PHP tools
+/phpactor.json
+/auth.json
