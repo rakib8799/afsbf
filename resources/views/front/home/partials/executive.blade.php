@@ -10,7 +10,7 @@
                 <div class="col-lg-4 col-md-6 shadow p-4">
                     <div class="item">
                         <div class="photo">
-                            <img src="{{ asset('storage/uploads/photo/'.$executive->photo) }}" alt="Executive Photo" />
+                            <img src="{{ asset('uploads/photo/'.$executive->photo) }}" alt="Executive Photo" />
                         </div>
                         <div class="text">
                             <h4>

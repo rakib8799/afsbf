@@ -35,12 +35,12 @@
 
                         <div class="col-md-6">
                             {{-- @if(isset($income->video))
-                                <div class="img-fluid" style="background-image: url('{{ asset('storage/uploads/photo/'.$income->photo) }}');" style="object-fit: contain;">
+                                <div class="img-fluid" style="background-image: url('{{ asset('uploads/photo/'.$income->photo) }}');" style="object-fit: contain;">
                                     <a class="video-button" href="https://www.youtube.com/watch?v={{ $income->video }}"><span></span></a>
                                 </div>
                                 @else --}}
                                 <div class="">
-                                    <img src="{{ asset('storage/uploads/photo/'.$income->photo) }}" alt="About image" class="img-fluid" style="object-fit: contain;">
+                                    <img src="{{ asset('uploads/photo/'.$income->photo) }}" alt="About image" class="img-fluid" style="object-fit: contain;">
                                 </div>
                             {{-- @endif --}}
                         </div>

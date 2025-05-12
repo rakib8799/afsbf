@@ -61,7 +61,7 @@ class AdminController extends Controller
             ]);
             //dd($request->photo->extension());
 
-            $filePath = public_path('storage/uploads/photo/'.Auth::guard('admin')->user()->photo);
+            $filePath = public_path('uploads/photo/'.Auth::guard('admin')->user()->photo);
             if(Auth::guard('admin')->user()->photo != null && $filePath) {
                 unlink($filePath);
             }

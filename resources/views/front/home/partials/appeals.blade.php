@@ -9,7 +9,7 @@
                 <div class="col-lg-4 col-md-6 shadow p-4" style="height: 53vh;">
                     <div class="item">
                         <div class="photo">
-                            <img src="{{ asset('storage/uploads/photo/'. $appeal->photo) }}" alt="appeal photo" class="img-fluid" style="object-fit: cover; width: 100%; height: 25vh;">
+                            <img src="{{ asset('uploads/photo/'. $appeal->photo) }}" alt="appeal photo" class="img-fluid" style="object-fit: cover; width: 100%; height: 25vh;">
                         </div>
                         <div class="text">
                             @php

@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ isset($global_banner->appeal) ? asset('storage/uploads/photo/'.$global_banner->appeal) : asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ isset($global_banner->appeal) ? asset('uploads/photo/'.$global_banner->appeal) : asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -25,7 +25,7 @@
                     {{-- <div class="row d-flex justify-content-center align-items-center"> --}}
                         <div class="row"> 
                             <div class="col-12">
-                                <img src="{{ asset('storage/uploads/photo/'.$appeal->photo) }}" alt="about image" class="img-fluid" style="object-fit: cover; width: 100%; height: 50vh;">
+                                <img src="{{ asset('uploads/photo/'.$appeal->photo) }}" alt="about image" class="img-fluid" style="object-fit: cover; width: 100%; height: 50vh;">
                             </div>
                         {{-- </div> --}}
                         {{-- <div class="col-md-6"> --}}
@@ -49,8 +49,8 @@
                                         @foreach($appealPhotos as $appealPhoto)
                                         <div class="col-md-6 col-lg-4">
                                             <div class="item">
-                                                <a href="{{ asset('storage/uploads/photo/'.$appealPhoto->photo) }}" class="magnific">
-                                                    <img src="{{ asset('storage/uploads/photo/'.$appealPhoto->photo) }}" alt="" />
+                                                <a href="{{ asset('uploads/photo/'.$appealPhoto->photo) }}" class="magnific">
+                                                    <img src="{{ asset('uploads/photo/'.$appealPhoto->photo) }}" alt="" />
                                                     <div class="icon">
                                                         <i class="fas fa-plus"></i>
                                                     </div>

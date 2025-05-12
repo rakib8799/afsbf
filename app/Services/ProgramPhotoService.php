@@ -21,7 +21,7 @@ class ProgramPhotoService extends BaseModelService
     public function deleteProgramPhoto(Program $program, ProgramPhoto $programPhoto) 
     {
         if (isset($program, $programPhoto->photo)) {
-            $filePath = public_path('storage/uploads/photo/' . $programPhoto->photo);
+            $filePath = public_path('uploads/photo/' . $programPhoto->photo);
             
             if (file_exists($filePath)) {
                 unlink($filePath);

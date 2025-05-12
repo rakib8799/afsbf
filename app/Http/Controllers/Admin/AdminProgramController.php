@@ -96,7 +96,7 @@ class AdminProgramController extends Controller
     public function destroy(Program $program)
     {
         if(isset($program) && isset($program->photo)) {
-            unlink(public_path('storage/uploads/photo/'. $program->photo));
+            unlink(public_path('uploads/photo/'. $program->photo));
         }
         $isDeleted = $program->delete();
         $status = $isDeleted ? 'success' : 'error';

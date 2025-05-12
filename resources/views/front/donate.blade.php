@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ isset($global_banner->donate) ? asset('storage/uploads/photo/'.$global_banner->donate) : asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ isset($global_banner->donate) ? asset('uploads/photo/'.$global_banner->donate) : asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

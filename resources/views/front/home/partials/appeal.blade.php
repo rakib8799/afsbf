@@ -6,7 +6,7 @@
                     <div class="row d-flex align-items-center g-5 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="col-md-6">
                             <div class="">
-                                <img src="{{ asset('storage/uploads/photo/'.$appeal->photo) }}" alt="about image" class="img-fluid" style="object-fit: contain;">
+                                <img src="{{ asset('uploads/photo/'.$appeal->photo) }}" alt="about image" class="img-fluid" style="object-fit: contain;">
                             </div>
                         </div>
                         <div class="col-md-6">

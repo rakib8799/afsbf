@@ -81,7 +81,7 @@ class AdminExecutiveController extends Controller
     public function destroy(Executive $executive)
     {
         if(isset($executive) && isset($executive->photo)) {
-            unlink(public_path('storage/uploads/photo/'. $executive->photo));
+            unlink(public_path('uploads/photo/'. $executive->photo));
         }
         $isDeleted = $executive->delete();
         $status = $isDeleted ? 'success' : 'error';

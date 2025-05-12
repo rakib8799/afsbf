@@ -6,12 +6,12 @@
                     <div class="row d-flex align-items-center g-5 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="col-md-6">
                             {{-- @if(isset($about->video))
-                                <div class="img-fluid" style="background-image: url('{{ asset('storage/uploads/photo/'.$about->photo) }}');" style="object-fit: contain;">
+                                <div class="img-fluid" style="background-image: url('{{ asset('uploads/photo/'.$about->photo) }}');" style="object-fit: contain;">
                                     <a class="video-button" href="https://www.youtube.com/watch?v={{ $about->video }}"><span></span></a>
                                 </div>
                                 @else --}}
                                 <div class="">
-                                    <img src="{{ asset('storage/uploads/photo/'.$about->photo) }}" alt="About image" class="img-fluid" style="object-fit: contain;">
+                                    <img src="{{ asset('uploads/photo/'.$about->photo) }}" alt="About image" class="img-fluid" style="object-fit: contain;">
                                 </div>
                             {{-- @endif --}}
                         </div>

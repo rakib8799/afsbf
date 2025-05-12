@@ -28,7 +28,7 @@ class AboutCategoryService extends BaseModelService
         $result = DB::transaction(function () use ($aboutCategory) {
             if(isset($aboutCategory->abouts)) {
                 foreach ($aboutCategory->abouts as $categoryPhoto) {
-                    $filePath = public_path('storage/uploads/photo/' . $categoryPhoto->photo);
+                    $filePath = public_path('uploads/photo/' . $categoryPhoto->photo);
                     
                     if (file_exists($filePath)) {
                         unlink($filePath);

@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-light px-md-5 py-3 py-lg-0">
         <a href="{{ route('home') }}" class="navbar-brand p-0">
             <div class="d-flex align-items-center">
-                <img src="{{ asset('storage/uploads/photo/'. $global_setting_data->logo_1) }}" alt="SBF_logo">
+                <img src="{{ asset('uploads/photo/'. $global_setting_data->logo_1) }}" alt="SBF_logo">
                 <p class="ms-1 text-white m-0 text-uppercase fw-bold fs-5">{{ $global_setting_data->seo_company_name }}</p>
             </div>
         </a>

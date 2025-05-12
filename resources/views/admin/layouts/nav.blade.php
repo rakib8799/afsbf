@@ -15,7 +15,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @if(Auth::guard('admin')->user()->photo != null)
-                    <img src="{{ asset('storage/uploads/photo/'.Auth::guard('admin')->user()->photo) }}" alt="" class="rounded-circle-custom">
+                    <img src="{{ asset('uploads/photo/'.Auth::guard('admin')->user()->photo) }}" alt="" class="rounded-circle-custom">
                 @else
                     <img src="{{ asset('uploads/default.png') }}" alt="" class="rounded-circle-custom">
                 @endif

@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ isset($global_banner->about_history) ? asset('storage/uploads/photo/'.$global_banner->about_history) : asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ isset($global_banner->about_history) ? asset('uploads/photo/'.$global_banner->about_history) : asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -26,17 +26,17 @@
                         @foreach ($historySections as $historySection)
                             {{-- <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s"> --}}
                                 {{-- @if(isset($historySection->video))
-                                    <div class="" style="background-image: url('{{ asset('storage/uploads/photo/'.$historySection->photo) }}');">
+                                    <div class="" style="background-image: url('{{ asset('uploads/photo/'.$historySection->photo) }}');">
                                         <a class="video-button" href="https://www.youtube.com/watch?v={{ $historySection->video }}"><span></span></a>
                                     </div>
                                     @else --}}
                                     {{-- <div class="">
-                                        <img src="{{ asset('storage/uploads/photo/'.$historySection->photo) }}" alt="about image" class="img-fluid" style="object-fit: contain;">
+                                        <img src="{{ asset('uploads/photo/'.$historySection->photo) }}" alt="about image" class="img-fluid" style="object-fit: contain;">
                                     </div> --}}
                                 {{-- @endif --}}
                             {{-- </div> --}}
                             <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                                <img src="{{ asset('storage/uploads/photo/'.$historySection->photo) }}" alt="about image" class="img-fluid" style="object-fit: cover; width: 100%; height: 50vh;">
+                                <img src="{{ asset('uploads/photo/'.$historySection->photo) }}" alt="about image" class="img-fluid" style="object-fit: cover; width: 100%; height: 50vh;">
                             </div>
                             <div class="col-12 mt-3 wow fadeInUp" data-wow-delay="0.1s">
                                 {{-- <h5 class="section-title bg-white text-start pe-3">{{ $historySection->sub_heading }}</h5> --}}

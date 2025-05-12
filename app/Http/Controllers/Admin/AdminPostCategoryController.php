@@ -58,7 +58,7 @@ class AdminPostCategoryController extends Controller
     {
         $posts = Post::where('post_category_id', $id)->get();
         foreach($posts as $post) {
-            $filePath = public_path('storage/uploads/photo/'.$post->photo);
+            $filePath = public_path('uploads/photo/'.$post->photo);
             if(isset($filePath)) {
                 unlink($filePath);
             }

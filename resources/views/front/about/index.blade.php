@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ isset($global_banner->about_who) ? asset('storage/uploads/photo/'.$global_banner->about_who) : asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ isset($global_banner->about_who) ? asset('uploads/photo/'.$global_banner->about_who) : asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -26,11 +26,11 @@
                         @foreach ($aboutSections as $aboutSection)
                             <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
                                 {{-- @if(isset($aboutSection->video))
-                                    <div class="" style="background-image: url('{{ asset('storage/uploads/photo/'.$aboutSection->photo) }}');">
+                                    <div class="" style="background-image: url('{{ asset('uploads/photo/'.$aboutSection->photo) }}');">
                                         <a class="video-button" href="https://www.youtube.com/watch?v={{ $aboutSection->video }}"><span></span></a>
                                     </div>
                                     @else --}}
-                                <img src="{{ asset('storage/uploads/photo/'.$aboutSection->photo) }}" alt="about image" class="img-fluid" style="object-fit: cover; width: 100%; height: 50vh;">
+                                <img src="{{ asset('uploads/photo/'.$aboutSection->photo) }}" alt="about image" class="img-fluid" style="object-fit: cover; width: 100%; height: 50vh;">
                                 {{-- @endif --}}
                             </div>
                             <div class="col-12 mt-3 wow fadeInUp" data-wow-delay="0.1s">

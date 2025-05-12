@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ isset($global_banner->testimonial) ? asset('storage/uploads/photo/'.$global_banner->testimonial) : asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ isset($global_banner->testimonial) ? asset('uploads/photo/'.$global_banner->testimonial) : asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -24,7 +24,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="item shadow p-4" style="height: 58vh;">
                         <div class="photo">
-                            <img src="{{ asset('storage/uploads/photo/'. $testimonial->photo) }}" alt="testimonial photo" class="img-fluid" style="object-fit: cover; width: 100%; height: 25vh;">
+                            <img src="{{ asset('uploads/photo/'. $testimonial->photo) }}" alt="testimonial photo" class="img-fluid" style="object-fit: cover; width: 100%; height: 25vh;">
                         </div>
                         <div class="text">
                             @php

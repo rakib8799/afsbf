@@ -71,7 +71,7 @@ class AdminTestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         if(isset($testimonial) && isset($testimonial->photo)) {
-            unlink(public_path('storage/uploads/photo/'. $testimonial->photo));
+            unlink(public_path('uploads/photo/'. $testimonial->photo));
         }
         $isDeleted = $testimonial->delete();
         $status = $isDeleted ? 'success' : 'error';

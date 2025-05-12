@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -24,7 +24,7 @@
                 <div class="left-item row">
                     <div class="col-md-11">
                         <div class="main-photo">
-                            <img src="{{ asset('storage/uploads/photo/'.$post->photo) }}" alt="" class="img-fluid" style="object-fit: cover; width: 100%; height: 60vh;">
+                            <img src="{{ asset('uploads/photo/'.$post->photo) }}" alt="" class="img-fluid" style="object-fit: cover; width: 100%; height: 60vh;">
                         </div>
                         <h3>{{ $post->title }}</h3>
                         <div class="sub">

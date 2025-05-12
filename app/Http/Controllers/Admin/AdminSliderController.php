@@ -66,7 +66,7 @@ class AdminSliderController extends Controller
     public function destroy(Slider $slider)
     {
         if(isset($slider->photo)) {
-            $file_path = public_path('storage/uploads/photo/'. $slider->photo);
+            $file_path = public_path('uploads/photo/'. $slider->photo);
             if(file_exists($file_path))
                 unlink($file_path);
         }

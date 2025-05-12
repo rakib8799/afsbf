@@ -31,7 +31,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/uploads/photo/' . $aboutSection->photo) }}" alt="" class="w_200">
+                                                <img src="{{ asset('uploads/photo/' . $aboutSection->photo) }}" alt="" class="w_200">
                                             </td>
                                             <td>
                                                 {{ $aboutSection->heading }}

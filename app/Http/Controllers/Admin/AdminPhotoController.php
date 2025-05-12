@@ -81,7 +81,7 @@ class AdminPhotoController extends Controller
     public function destroy(Photo $photo)
     {
         if(isset($photo) && isset($photo->photo)) {
-            unlink(public_path('storage/uploads/photo/'. $photo->photo));
+            unlink(public_path('uploads/photo/'. $photo->photo));
         }
         $isDeleted = $photo->delete();
         $status = $isDeleted ? 'success' : 'error';

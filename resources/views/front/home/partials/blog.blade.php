@@ -11,7 +11,7 @@
                 <div class="col-lg-4 col-md-6 shadow p-4">
                     <div class="item">
                         <div class="photo">
-                            <img src="{{ asset('storage/uploads/photo/'.$item->photo) }}" alt="blog photo" style="object-fit: cover; width: 100%; height: 25vh;" />
+                            <img src="{{ asset('uploads/photo/'.$item->photo) }}" alt="blog photo" style="object-fit: cover; width: 100%; height: 25vh;" />
                         </div>
                         <div class="text">
                             <h2>

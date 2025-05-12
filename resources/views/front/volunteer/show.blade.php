@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="photo">
-                    <img src="{{ asset('storage/uploads/photo/'.$volunteer->photo) }}" alt="">
+                    <img src="{{ asset('uploads/photo/'.$volunteer->photo) }}" alt="">
                 </div>
             </div>
             <div class="col-md-9">

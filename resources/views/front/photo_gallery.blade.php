@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ isset($global_banner->photo_gallery) ? asset('storage/uploads/photo/'.$global_banner->photo_gallery) : asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ isset($global_banner->photo_gallery) ? asset('uploads/photo/'.$global_banner->photo_gallery) : asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -26,8 +26,8 @@
                     <h2 class="photo-gallery-heading pt_30">{{ $photo->photoCategory->name }}</h2>
                     <div class="photo-gallery-item mb_25">
                         <div class="photo-gallery-item-bg"></div>
-                        <a href="{{ asset('storage/uploads/photo/'.$photo->photo) }}" class="magnific" title="">
-                            <img src="{{ asset('storage/uploads/photo/'.$photo->photo) }}">
+                        <a href="{{ asset('uploads/photo/'.$photo->photo) }}" class="magnific" title="">
+                            <img src="{{ asset('uploads/photo/'.$photo->photo) }}">
                             <div class="plus-icon"><i class="fas fa-search-plus"></i></div>
                         </a>
                     </div>
@@ -51,8 +51,8 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="photo-gallery-item mb_25">
                         <div class="photo-gallery-item-bg"></div>
-                        <a href="{{ asset('storage/uploads/photo/'.$photo->photo) }}" class="magnific" title="">
-                            <img src="{{ asset('storage/uploads/photo/'.$photo->photo) }}">
+                        <a href="{{ asset('uploads/photo/'.$photo->photo) }}" class="magnific" title="">
+                            <img src="{{ asset('uploads/photo/'.$photo->photo) }}">
                             <div class="plus-icon"><i class="fas fa-search-plus"></i></div>
                         </a>
                     </div>

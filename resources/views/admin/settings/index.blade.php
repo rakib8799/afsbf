@@ -40,7 +40,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing First Logo</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$settings->logo_1) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$settings->logo_1) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -60,7 +60,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Second Logo</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$settings->logo_2) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$settings->logo_2) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -80,7 +80,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Favicon</label>
                                                         <div>
-                                                            <img src="{{ isset($settings->favicon) ? asset ('storage/uploads/photo/'.$settings->favicon) : '' }}" alt="" class="w_50">
+                                                            <img src="{{ isset($settings->favicon) ? asset ('uploads/photo/'.$settings->favicon) : '' }}" alt="" class="w_50">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -99,7 +99,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Banner</label>
                                                         <div>
-                                                            <img src="{{ isset($settings->banner) ? asset( 'storage/uploads/photo/'.$settings->banner) : '' }}" alt="" class="w_200">
+                                                            <img src="{{ isset($settings->banner) ? asset( 'uploads/photo/'.$settings->banner) : '' }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -258,7 +258,7 @@
                                                         <div class="form-group mb-3">
                                                             <label>Existing Logo</label>
                                                             <div>
-                                                                <img src="{{ asset('storage/uploads/photo/'.$settings->footer_logo) }}" alt="" class="w_200">
+                                                                <img src="{{ asset('uploads/photo/'.$settings->footer_logo) }}" alt="" class="w_200">
                                                             </div>
                                                         </div>
                                                     @endisset
@@ -433,7 +433,7 @@
                                                         <div class="form-group mb-3">
                                                             <label>Existing first country's photo</label>
                                                             <div>
-                                                                <img src="{{ asset('storage/uploads/photo/' .$settings->map_1_country_photo) }}" alt="" class="w_200">
+                                                                <img src="{{ asset('uploads/photo/' .$settings->map_1_country_photo) }}" alt="" class="w_200">
                                                             </div>
                                                         </div>
                                                     @endisset
@@ -452,7 +452,7 @@
                                                         <div class="form-group mb-3">
                                                             <label>Existing second country's photo</label>
                                                             <div>
-                                                                <img src="{{ asset('storage/uploads/photo/' .$settings->map_2_country_photo) }}" alt="" class="w_50">
+                                                                <img src="{{ asset('uploads/photo/' .$settings->map_2_country_photo) }}" alt="" class="w_50">
                                                             </div>
                                                         </div>
                                                     @endisset

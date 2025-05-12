@@ -33,7 +33,7 @@
                                     <div class="form-group mb-3">
                                         <label>Existing Photo</label>
                                         <div>
-                                            <img src="{{ asset('storage/uploads/photo/' . $causePhoto->photo) }}" alt="" class="w_200">
+                                            <img src="{{ asset('uploads/photo/' . $causePhoto->photo) }}" alt="" class="w_200">
                                         </div>
                                     </div>
                                 @endisset
@@ -76,7 +76,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/uploads/photo/'.$causePhoto->photo) }}" alt="" class="w_150">
+                                                <img src="{{ asset('uploads/photo/'.$causePhoto->photo) }}" alt="" class="w_150">
                                             </td>
                                             <td class="pt_10 pb_10">
                                                 <a href="{{ route('admin.causes.photos',[$cause->slug, $causePhoto->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>

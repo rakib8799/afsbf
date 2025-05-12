@@ -10,7 +10,7 @@
         <title>{{ $global_setting_data->seo_title }}</title>
         <meta name="robots" content="index, follow">
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('storage/uploads/photo/'.$global_setting_data->favicon) }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('uploads/photo/'.$global_setting_data->favicon) }}">
 
         @include('front.layouts.styles')
 
@@ -100,7 +100,7 @@
                             <h2 class="heading">Who we are</h2>
                             <div class="list-item">
                                 <a href="" class="navbar-brand p-0">
-                                    <img src="{{ asset('storage/uploads/photo/'.$global_setting_data->logo_2) }}" class="img-fluid w-25" alt="SBF_logo">
+                                    <img src="{{ asset('uploads/photo/'.$global_setting_data->logo_2) }}" class="img-fluid w-25" alt="SBF_logo">
                                     <!-- <img src="img/logo.png" alt="Logo"> -->
                                 </a>
                                 <h5 class="text-white mb-3 mt-2">Arfan Familys Smiling Baby Foundation</h5>
@@ -209,7 +209,7 @@
                 <div class="row text-center">
                     <div class="col-12">
                         <p class="text-center text-white">Registered by the Australian Charities and Not-for-profits Commission (ACNC), Australian Government.</p>
-                        <img src="{{ asset('storage/uploads/photo/'.$global_setting_data->footer_logo) }}" class="img-fluid mb-2" style="object-fit: contain; height: 8vh;" alt="SBF_logo">
+                        <img src="{{ asset('uploads/photo/'.$global_setting_data->footer_logo) }}" class="img-fluid mb-2" style="object-fit: contain; height: 8vh;" alt="SBF_logo">
                         <p class="text-danger text-center">Any donation made to our charity is 100% tax deductible.</p>
                     </div>
                     <div class="col-lg-12 col-md-12">

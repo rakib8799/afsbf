@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ isset($global_banner->blog) ? asset('storage/uploads/photo/'.$global_banner->blog) : asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ isset($global_banner->blog) ? asset('uploads/photo/'.$global_banner->blog) : asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -26,7 +26,7 @@
                     @if ($post->rPostCategory->slug !== 'successful-stories')
                         <div class="item row shadow p-4 mb-4">
                             <div class="photo col-md-4">
-                                <img src="{{ asset('storage/uploads/photo/'.$post->photo) }}" alt="blog photo" class="img-fluid" style="object-fit: cover; width: 100%; height: 25vh;" />
+                                <img src="{{ asset('uploads/photo/'.$post->photo) }}" alt="blog photo" class="img-fluid" style="object-fit: cover; width: 100%; height: 25vh;" />
                             </div>
                             <div class="text col-md-8">
                                 @php

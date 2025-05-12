@@ -21,7 +21,7 @@ class CausePhotoService extends BaseModelService
     public function deleteCausePhoto(Cause $cause, CausePhoto $causePhoto) 
     {
         if (isset($cause, $causePhoto->photo)) {
-            $filePath = public_path('storage/uploads/photo/' . $causePhoto->photo);
+            $filePath = public_path('uploads/photo/' . $causePhoto->photo);
             
             if (file_exists($filePath)) {
                 unlink($filePath);

@@ -83,7 +83,7 @@ class AdminNewsController extends Controller
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
             ]);
             if(isset($news->photo)) {
-                $filePath = public_path('storage/uploads/photo/' . $news->photo);
+                $filePath = public_path('uploads/photo/' . $news->photo);
                 if (file_exists($filePath)) {
                     unlink($filePath);
                 }
@@ -106,7 +106,7 @@ class AdminNewsController extends Controller
     {
         $news = news::findOrFail($id);
         if(isset($news->photo)) {
-            $filePath = public_path('storage/uploads/photo/' . $news->photo);
+            $filePath = public_path('uploads/photo/' . $news->photo);
             if (file_exists($filePath)) {
                 unlink($filePath);
             }

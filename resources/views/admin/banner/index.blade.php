@@ -25,7 +25,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Appeal's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->appeal) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->appeal) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -45,7 +45,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing History's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->about_history) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->about_history) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -65,7 +65,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Who we are's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->about_who) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->about_who) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -85,7 +85,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Executive's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->executive) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->executive) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -105,7 +105,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Volunteer's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->volunteer) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->volunteer) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -125,7 +125,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Program's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->program) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->program) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -145,7 +145,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Photo Gallery's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->photo_gallery) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->photo_gallery) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -165,7 +165,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Video Gallery's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->video_gallery) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->video_gallery) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -185,7 +185,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Story's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->story) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->story) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -205,7 +205,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Testimonial's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->testimonial) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->testimonial) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -225,7 +225,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Join Volunteer's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->join_volunteer) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->join_volunteer) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -245,7 +245,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Be a sponsor's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->be_sponsor) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->be_sponsor) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -265,7 +265,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Blog's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->blog) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->blog) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -285,7 +285,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing News's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->news) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->news) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -305,7 +305,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Contact's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->contact) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->contact) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset
@@ -325,7 +325,7 @@
                                                     <div class="form-group mb-3">
                                                         <label>Existing Donate's Banner</label>
                                                         <div>
-                                                            <img src="{{ asset('storage/uploads/photo/'.$pagesBanner->donate) }}" alt="" class="w_200">
+                                                            <img src="{{ asset('uploads/photo/'.$pagesBanner->donate) }}" alt="" class="w_200">
                                                         </div>
                                                     </div>
                                                 @endisset

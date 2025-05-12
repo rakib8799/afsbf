@@ -80,7 +80,7 @@ class AdminAppealController extends Controller
     public function destroy(Appeal $appeal)
     {
         if(isset($appeal) && isset($appeal->photo)) {
-            unlink(public_path('storage/uploads/photo/'. $appeal->photo));
+            unlink(public_path('uploads/photo/'. $appeal->photo));
         }
         $isDeleted = $appeal->delete();
         $status = $isDeleted ? 'success' : 'error';

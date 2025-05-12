@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -26,7 +26,7 @@
                 {{-- <div class=""> --}}
                     <div class="row">
                         <div class="col-md-6">
-                            <img src="{{ asset('storage/uploads/photo/'.$cause->featured_photo) }}" alt="" class="img-fluid" style="max-height: 50vh; object-fit:contain;">
+                            <img src="{{ asset('uploads/photo/'.$cause->featured_photo) }}" alt="" class="img-fluid" style="max-height: 50vh; object-fit:contain;">
                         </div>
                         <div class="col-md-6">
                             <div class="">
@@ -141,8 +141,8 @@
                             @foreach($causePhotos as $causePhoto)
                             <div class="col-md-6 col-lg-4">
                                 <div class="item">
-                                    <a href="{{ asset('storage/uploads/photo/'.$causePhoto->photo) }}" class="magnific">
-                                        <img src="{{ asset('storage/uploads/photo/'.$causePhoto->photo) }}" alt="" />
+                                    <a href="{{ asset('uploads/photo/'.$causePhoto->photo) }}" class="magnific">
+                                        <img src="{{ asset('uploads/photo/'.$causePhoto->photo) }}" alt="" />
                                         <div class="icon">
                                             <i class="fas fa-plus"></i>
                                         </div>

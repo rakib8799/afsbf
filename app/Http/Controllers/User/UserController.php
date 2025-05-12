@@ -69,7 +69,7 @@ class UserController extends Controller
             ]);
 
             if(Auth::guard('web')->user()->photo != null) {
-                unlink(public_path('storage/uploads/photo/'.Auth::guard('web')->user()->photo));
+                unlink(public_path('uploads/photo/'.Auth::guard('web')->user()->photo));
             }
 
             $final_name = time().'.'.$request->photo->extension();

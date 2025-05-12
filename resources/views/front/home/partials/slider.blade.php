@@ -2,7 +2,7 @@
     <div class="slide-carousel owl-carousel">
 
         @foreach($slider as $slide)
-        <div class="item" style="background-image:url('{{ asset('storage/uploads/photo/'.$slide->photo) }}');">
+        <div class="item" style="background-image:url('{{ asset('uploads/photo/'.$slide->photo) }}');">
             <div class="bg"></div>
             <div class="text">
                 <div class="container">

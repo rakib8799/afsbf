@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section('main_content')
-<div class="page-top" style="background-image: url({{ isset($global_banner->contact) ? asset('storage/uploads/photo/'.$global_banner->contact) : asset('storage/uploads/photo/'.$global_setting_data->banner) }})">
+<div class="page-top" style="background-image: url({{ isset($global_banner->contact) ? asset('uploads/photo/'.$global_banner->contact) : asset('uploads/photo/'.$global_setting_data->banner) }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -24,7 +24,7 @@
             <div class="col-md-6">
                 <h4 class="text-center">Office in {{ $global_setting_data->map_1_country_name }}</h4>
                 <div class="d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('storage/uploads/photo/' . $global_setting_data->map_1_country_photo) }}" alt="" class="img-fluid">
+                    <img src="{{ asset('uploads/photo/' . $global_setting_data->map_1_country_photo) }}" alt="" class="img-fluid">
                 </div>
                 <div class="my-3">
                     <div class="d-flex">
@@ -53,7 +53,7 @@
             <div class="col-md-6">
                 <h4 class="text-center">Office in {{ $global_setting_data->map_2_country_name }}</h4>
                 <div class="d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('storage/uploads/photo/' . $global_setting_data->map_2_country_photo) }}" alt="" class="img-fluid">
+                    <img src="{{ asset('uploads/photo/' . $global_setting_data->map_2_country_photo) }}" alt="" class="img-fluid">
                 </div>
                 <div class="my-3">
                     <div class="d-flex">

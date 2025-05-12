@@ -10,7 +10,7 @@
                 <div class="owl-carousel testimonial-carousel position-relative">
                     @foreach($testimonials as $testimonial)
                         <div class="testimonial-item text-center border p-4">
-                            <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ asset('storage/uploads/photo/'.$testimonial->photo) }}" alt="Testimonial photo" style="width: 80px; height: 80px;">
+                            <img class="bg-white rounded-circle shadow p-1 mx-auto mb-3" src="{{ asset('uploads/photo/'.$testimonial->photo) }}" alt="Testimonial photo" style="width: 80px; height: 80px;">
                             <h5 class="mb-0">{{ $testimonial->name }}</h5>
                             <p class="text-center">{{ $testimonial->designation }}</p>
                             <p class="mb-0">{!! $testimonial->comment !!}</p>

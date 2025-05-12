@@ -101,7 +101,7 @@ class AdminOrphanController extends Controller
     public function destroy(Orphan $orphan)
     {
         if(isset($orphan->photo)) {
-            $file_path = public_path('storage/uploads/photo/'.$orphan->photo);
+            $file_path = public_path('uploads/photo/'.$orphan->photo);
             if(file_exists($file_path))
             unlink($file_path);
         }

@@ -89,7 +89,7 @@ class AdminCauseController extends Controller
     public function destroy(Cause $cause)
     {
         if(isset($cause) && isset($cause->photo)) {
-            unlink(public_path('storage/uploads/photo/'. $cause->photo));
+            unlink(public_path('uploads/photo/'. $cause->photo));
         }
         $isDeleted = $cause->delete();
         $status = $isDeleted ? 'success' : 'error';

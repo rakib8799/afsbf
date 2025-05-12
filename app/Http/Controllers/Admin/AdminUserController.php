@@ -38,7 +38,7 @@ class AdminUserController extends Controller
     public function destroy(User $user)
     {
         if(isset($user) && isset($user->photo)) {
-            unlink(public_path('storage/uploads/photo/'. $user->photo));
+            unlink(public_path('uploads/photo/'. $user->photo));
         }
         $isDeleted = $user->delete();
         $status = $isDeleted ? 'success' : 'error';

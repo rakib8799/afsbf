@@ -79,7 +79,7 @@ class AdminVolunteerController extends Controller
     public function destroy(Volunteer $volunteer)
     {
         if(isset($volunteer->photo)) {
-            $file_path = public_path('storage/uploads/photo/'.$volunteer->photo);
+            $file_path = public_path('uploads/photo/'.$volunteer->photo);
             if(file_exists($file_path))
             unlink($file_path);
         }

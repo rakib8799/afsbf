@@ -76,7 +76,7 @@ class AdminAboutController extends Controller
     public function destroy(About $about)
     {
         if(isset($about) && isset($about->photo)) {
-            unlink(public_path('storage/uploads/photo/'. $about->photo));
+            unlink(public_path('uploads/photo/'. $about->photo));
         }
         $isDeleted = $about->delete();
         $status = $isDeleted ? 'success' : 'error';

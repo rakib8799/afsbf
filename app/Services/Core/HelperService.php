@@ -35,7 +35,7 @@ class HelperService
     public static function uploadPhoto($key, $fileName, $col = null)
     {
         if(isset($col)) {
-            $filePath = public_path('storage/uploads/photo/' . $col);
+            $filePath = public_path('uploads/photo/' . $col);
             if (file_exists($filePath)) {
                 unlink($filePath);
             }
@@ -52,7 +52,7 @@ class HelperService
 
         foreach ($files as $file) {
             if (isset($col)) {
-                $filePath = public_path('storage/uploads/photo/' . $col);
+                $filePath = public_path('uploads/photo/' . $col);
                 if (file_exists($filePath)) {
                     unlink($filePath);
                 }

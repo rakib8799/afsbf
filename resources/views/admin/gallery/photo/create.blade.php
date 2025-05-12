@@ -26,7 +26,7 @@
                                     <div class="form-group mb-3">
                                         <label>Existing Photo</label>
                                         <div>
-                                            <img src="{{ asset('storage/uploads/photo/' . $photo->photo) }}" alt="" class="w_200">
+                                            <img src="{{ asset('uploads/photo/' . $photo->photo) }}" alt="" class="w_200">
                                         </div>
                                     </div>
                                 @endisset

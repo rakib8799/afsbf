@@ -17,7 +17,7 @@
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-3">
                                         @if(Auth::guard('admin')->user()->photo != null)
-                                            <img src="{{ asset('storage/uploads/photo/'.Auth::guard('admin')->user()->photo) }}" alt="" class="profile-photo w_100_p">
+                                            <img src="{{ asset('uploads/photo/'.Auth::guard('admin')->user()->photo) }}" alt="" class="profile-photo w_100_p">
                                         @else
                                             <img src="{{ asset('uploads/default.png') }}" alt="" class="profile-photo w_100_p">
                                         @endif

@@ -21,7 +21,7 @@ class AppealPhotoService extends BaseModelService
     public function deleteAppealPhoto(Appeal $appeal, AppealPhoto $appealPhoto) 
     {
         if (isset($appeal, $appealPhoto->photo)) {
-            $filePath = public_path('storage/uploads/photo/' . $appealPhoto->photo);
+            $filePath = public_path('uploads/photo/' . $appealPhoto->photo);
             
             if (file_exists($filePath)) {
                 unlink($filePath);

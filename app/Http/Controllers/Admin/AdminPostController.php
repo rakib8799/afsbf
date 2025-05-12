@@ -103,7 +103,7 @@ class AdminPostController extends Controller
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
             ]);
             if(isset($post->photo)) {
-                $filePath = public_path('storage/uploads/photo/' . $post->photo);
+                $filePath = public_path('uploads/photo/' . $post->photo);
                 if (file_exists($filePath)) {
                     unlink($filePath);
                 }
@@ -129,7 +129,7 @@ class AdminPostController extends Controller
     {
         $post = Post::findOrFail($id);
         if(isset($post->photo)) {
-            $filePath = public_path('storage/uploads/photo/' . $post->photo);
+            $filePath = public_path('uploads/photo/' . $post->photo);
             if (file_exists($filePath)) {
                 unlink($filePath);
             }
