@@ -71,7 +71,7 @@ $PHP artisan view:cache
 
 # === STEP 7: Database Migrations ===
 echo "🧬 Running migrations..."
-$PHP artisan migrate --force
+# $PHP artisan migrate --force
 
 # === STEP 8: NPM Build ===
 echo "🧱 Building frontend assets..."
