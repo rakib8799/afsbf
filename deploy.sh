@@ -6,8 +6,8 @@ set -o pipefail
 echo "🚀 Starting Laravel, Inertia & Vue.js deployment..."
 
 # === CONFIGURATION ===
-USER="hrm"
-SUB_DOMAIN="hrm-central-admin"
+USER="afsbf"
+SUB_DOMAIN="afsbf"
 DOMAIN="mkrdev.xyz"
 APP_DIR="/home/$USER/web/$SUB_DOMAIN.$DOMAIN/public_html"
 PHP="php8.3"
