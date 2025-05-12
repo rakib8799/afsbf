@@ -82,8 +82,23 @@ echo "🔐 Fixing permissions..."
 chown -R "$USER":"$USER" .
 chmod -R ug+rwx storage bootstrap/cache
 
-# === STEP 12: Set Write Permissions for public/storage ===
-echo "🔧 Setting write permissions for public/storage..."
+# === STEP 12: Fix and Set Write Permissions for public/storage ===
+echo "🔧 Fixing and setting write permissions for public/storage..."
+if [ -L "public/storage" ]; then
+    # Check if the symlink is broken
+    if [ ! -e "public/storage" ]; then
+        echo "⚠️ Broken symlink found. Recreating symlink..."
+        rm -f public/storage
+        sudo -u "$USER" $PHP artisan storage:link
+    else
+        echo "ℹ️ Storage symlink exists and is valid."
+    fi
+else
+    echo "🔗 Symlink does not exist. Creating storage symlink..."
+    sudo -u "$USER" $PHP artisan storage:link
+fi
+
+# Ensure write permissions for the storage directory
 chown -R "$USER":"www-data" public/storage
 chmod -R 775 public/storage
 
