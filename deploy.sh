@@ -82,7 +82,12 @@ echo "🔐 Fixing permissions..."
 chown -R "$USER":"$USER" .
 chmod -R ug+rwx storage bootstrap/cache
 
-# === STEP 12: Maintenance Mode Off ===
+# === STEP 12: Set Write Permissions for public/storage ===
+echo "🔧 Setting write permissions for public/storage..."
+chown -R "$USER":"www-data" public/storage
+chmod -R 775 public/storage
+
+# === STEP 13: Maintenance Mode Off ===
 echo "✅ Disabling maintenance mode..."
 sudo -u "$USER" $PHP artisan up
 
