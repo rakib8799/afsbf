@@ -113,7 +113,7 @@ Route::prefix('news')->group(function () {
 
 Route::prefix('programs')->group(function () {
     Route::get('/', [ProgramController::class, 'index'])->name('programs.index');
-    Route::get('/{programs_slug}', [ProgramController::class, 'show'])->name('programs.show');
+    Route::get('/{program_slug}', [ProgramController::class, 'show'])->name('programs.show');
     Route::post('/send-message', [ProgramController::class, 'sendMessage'])->name('programs.send-message');
     Route::prefix('ticket')->group(function () {
         Route::prefix('payment')->group(function () {
@@ -207,10 +207,10 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
 
     // About
     Route::prefix('abouts')->group(function () {
-        Route::resource('about-category', AdminAboutCategoryController::class); 
+        Route::resource('about-category', AdminAboutCategoryController::class);
         Route::patch('/about-category/{about_category}/change-status', [AdminAboutCategoryController::class, 'changeStatus'])->name('about-category.changeStatus');
 
-        Route::resource('about', AdminAboutController::class); 
+        Route::resource('about', AdminAboutController::class);
         Route::patch('/about/{about}/change-status', [AdminAboutController::class, 'changeStatus'])->name('about.changeStatus');
     });
 
@@ -285,19 +285,19 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::prefix('gallery')->name('gallery.')->group(function () {
         // Photo
         Route::prefix('photos')->group(function () {
-            Route::resource('photo-category', AdminPhotoCategoryController::class); 
+            Route::resource('photo-category', AdminPhotoCategoryController::class);
             Route::patch('/photo-category/{photo_category}/change-status', [AdminPhotoCategoryController::class, 'changeStatus'])->name('photo-category.changeStatus');
-    
-            Route::resource('photo', AdminPhotoController::class); 
+
+            Route::resource('photo', AdminPhotoController::class);
             Route::patch('/photo/{photo}/change-status', [AdminPhotoController::class, 'changeStatus'])->name('photo.changeStatus');
         });
 
         // Video
         Route::prefix('videos')->group(function () {
-            Route::resource('video-category', AdminVideoCategoryController::class); 
+            Route::resource('video-category', AdminVideoCategoryController::class);
             Route::patch('/video-category/{video_category}/change-status', [AdminVideoCategoryController::class, 'changeStatus'])->name('video-category.changeStatus');
-    
-            Route::resource('video', AdminVideoController::class); 
+
+            Route::resource('video', AdminVideoController::class);
             Route::patch('/video/{video}/change-status', [AdminVideoController::class, 'changeStatus'])->name('video.changeStatus');
         });
     });
@@ -338,7 +338,7 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/news/edit/{id}', [AdminNewsController::class, 'edit'])->name('admin_news_edit');
     Route::post('/news/edit/submit/{id}', [AdminNewsController::class, 'edit_submit'])->name('admin_news_edit_submit');
     Route::delete('/news/delete/{id}', [AdminNewsController::class, 'delete'])->name('admin_news_delete');
-    Route::patch('/news/{news:slug}/change-status', [AdminNewsController::class, 'changeStatus'])->name('admin_news_changeStatus'); 
+    Route::patch('/news/{news:slug}/change-status', [AdminNewsController::class, 'changeStatus'])->name('admin_news_changeStatus');
 
     // Causes
     Route::resource('/causes', AdminCauseController::class);
