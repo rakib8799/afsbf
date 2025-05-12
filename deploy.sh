@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-echo "🚀 Starting Laravel, Inertia & Vue.js deployment..."
+echo "🚀 Starting full Laravel + Inertia + Vue.js deployment..."
 
 # === CONFIGURATION ===
 USER="afsbf"
@@ -11,108 +11,80 @@ SUB_DOMAIN="afsbf"
 DOMAIN="mkrdev.xyz"
 APP_DIR="/home/$USER/web/$SUB_DOMAIN.$DOMAIN/public_html"
 PHP="php8.3"
+NODE_ENV="production"
 
-# === STEP 1: Navigate to App Directory ===
-echo "📂 Navigating to app directory..."
-cd "$APP_DIR" || {
-    echo "❌ Failed to access $APP_DIR"
-    exit 1
-}
+# === STEP 1: Sanity Checks ===
+echo "🔍 Checking environment..."
+command -v $PHP >/dev/null || { echo "❌ PHP ($PHP) not found"; exit 1; }
+command -v composer >/dev/null || { echo "❌ Composer not found"; exit 1; }
+command -v npm >/dev/null || { echo "❌ NPM not found"; exit 1; }
 
-# === STEP 2: Git Pull ===
+# === STEP 2: Navigate to App Directory ===
+echo "📂 Changing to app directory..."
+cd "$APP_DIR" || { echo "❌ Failed to access $APP_DIR"; exit 1; }
+
+# === STEP 3: Git Pull with Safety ===
+echo "📥 Pulling latest code..."
 if [ ! -d ".git" ]; then
     echo "❌ No Git repository found."
     exit 1
 fi
-
-echo "📥 Pulling latest code..."
 git config --global --add safe.directory "$APP_DIR"
-git reset --hard
-git pull origin main --ff-only
+git fetch origin main
+git reset --hard origin/main
 
-# === STEP 3: Clear Vendor Directory ===
-echo "🧹 Deleting vendor directory..."
+# === STEP 4: Backup .env & Database ===
+echo "💾 Backing up .env and database..."
+cp .env ".env.backup.$(date +%F-%H-%M-%S)"
+sudo -u "$USER" $PHP artisan backup:run --only-db || echo "⚠️ Database backup skipped or failed"
+
+# === STEP 5: Composer Install ===
+echo "📦 Installing PHP dependencies..."
 rm -rf vendor/
+sudo -u "$USER" composer clear-cache
+sudo -u "$USER" composer install --no-dev --optimize-autoloader
 
-# === STEP 4: Composer Install ===
-echo "📦 Installing Composer dependencies..."
+# === STEP 6: NPM Build ===
+echo "🧱 Installing and building frontend..."
+sudo -u "$USER" npm ci --legacy-peer-deps
+sudo -u "$USER" npm run build
 
-# Clear Composer cache to avoid old dependencies or corrupt cache
-echo "🧹 Clearing Composer cache..."
-sudo -u "$USER" composer clear-cache || {
-    echo "❌ Composer cache clear failed"
-    exit 1
-}
+# === STEP 7: Laravel Maintenance Mode ===
+echo "🛑 Enabling maintenance mode..."
+sudo -u "$USER" $PHP artisan down || true
 
-# Run Composer install with the --no-dev flag to avoid installing unnecessary dev dependencies
-echo "📦 Installing Composer dependencies..."
-sudo -u "$USER" composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev || {
-    echo "❌ Composer install failed"
-    exit 1
-}
+# === STEP 8: Laravel Optimizations ===
+echo "⚡ Running Laravel optimizations..."
+sudo -u "$USER" $PHP artisan config:clear
+sudo -u "$USER" $PHP artisan cache:clear
+sudo -u "$USER" $PHP artisan view:clear
+sudo -u "$USER" $PHP artisan route:clear
 
-# Fix permissions for vendor directory after Composer install
-echo "🔧 Fixing permissions for vendor directory..."
-chown -R "$USER":"$USER" vendor/
-chmod -R 755 vendor/
+sudo -u "$USER" $PHP artisan config:cache
+sudo -u "$USER" $PHP artisan route:cache
+sudo -u "$USER" $PHP artisan view:cache
 
-# === STEP 5: Laravel Environment Setup ===
-echo "🔐 Setting up Laravel environment..."
+# === STEP 9: Migrate DB ===
+echo "🗄️ Running database migrations..."
+sudo -u "$USER" $PHP artisan migrate --force
 
-if [ ! -f ".env" ]; then
-    echo "📄 .env not found, copying from .env.example"
-    cp .env.example .env
-fi
-
-# Create storage symlink if it doesn't exist ===
-if [ ! -L "public/storage" ]; then
-    echo "🔗 Creating storage symlink..."
-    sudo -u "$USER" $PHP artisan storage:link || {
-        echo "❌ Failed to create storage symlink"
-        exit 1
-    }
+# === STEP 10: Queue / Horizon Restart ===
+if grep -q "HorizonServiceProvider" config/app.php 2>/dev/null; then
+    echo "🔁 Restarting Laravel Horizon..."
+    sudo -u "$USER" $PHP artisan horizon:terminate
 else
-    echo "ℹ️ Storage symlink already exists. Skipping..."
+    echo "🔁 Restarting Laravel queues..."
+    sudo -u "$USER" $PHP artisan queue:restart
 fi
 
-# Run Migrations
-echo "🛠 Running migrations..."
-$PHP artisan migrate --force || {
-    echo "❌ Migrations failed"
-}
+# === STEP 11: File Permissions ===
+echo "🔐 Fixing permissions..."
+chown -R "$USER":"$USER" .
+chmod -R ug+rwx storage bootstrap/cache
 
-# Fix file permissions for .env and directories
-echo "🔧 Fixing permissions for .env and directories..."
-chown "$USER":"www-data" .env
-chmod 664 .env
-chown -R "$USER":"www-data" storage/ bootstrap/cache/
-chmod -R 775 storage/ bootstrap/cache/
+# === STEP 12: Maintenance Mode Off ===
+echo "✅ Disabling maintenance mode..."
+sudo -u "$USER" $PHP artisan up
 
-# Generate app key only if not set
-if ! grep -q '^APP_KEY=' .env; then
-    echo "🔑 Generating app key..."
-    sudo -u "$USER" $PHP artisan key:generate
-else
-    echo "🔑 APP_KEY already exists, skipping key generation."
-fi
-
-# === STEP 6: Node Frontend Setup ===
-echo "🧹 Cleaning old node_modules..."
-rm -rf node_modules package-lock.json
-
-echo "📦 Installing Node dependencies..."
-sudo -u "$USER" npm install
-
-# Clear Vite build dir to prevent EACCES errors
-echo "🧹 Cleaning Vite build cache..."
-rm -rf public/build/assets || true
-mkdir -p public/build/assets
-chown -R "$USER":"$USER" public/build
-
-echo "⚙️ Building frontend with Vite..."
-sudo -u "$USER" npm run build || {
-    echo "❌ Vite build failed"
-    exit 1
-}
-
+# === DONE ===
 echo "✅ Deployment completed successfully!"
