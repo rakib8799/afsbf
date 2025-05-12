@@ -64,11 +64,16 @@ if [ ! -f ".env" ]; then
     cp .env.example .env
 fi
 
-# Storage Symlink
-echo "🔗 Creating storage symlink..."
-$PHP artisan storage:link || {
-    echo "❌ Failed to create storage link"
-}
+# Create storage symlink if it doesn't exist ===
+if [ ! -L "public/storage" ]; then
+    echo "🔗 Creating storage symlink..."
+    sudo -u "$USER" $PHP artisan storage:link || {
+        echo "❌ Failed to create storage symlink"
+        exit 1
+    }
+else
+    echo "ℹ️ Storage symlink already exists. Skipping..."
+fi
 
 # Run Migrations
 echo "🛠 Running migrations..."
