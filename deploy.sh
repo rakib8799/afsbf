@@ -64,6 +64,8 @@ if [ ! -f ".env" ]; then
     cp .env.example .env
 fi
 
+$PHP artisan optimize:clear
+
 # Storage Symlink
 echo "🔗 Creating storage symlink..."
 $PHP artisan storage:link || {
