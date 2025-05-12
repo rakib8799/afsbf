@@ -42,7 +42,7 @@ sudo -u "$USER" composer clear-cache || {
     exit 1
 }
 
-sudo -u "$USER" composer install --no-dev --optimize-autoloader || {
+sudo -u "$USER" composer install --no-dev --optimize-autoloader --no-scripts || {
     echo "❌ Composer install failed"
     exit 1
 }
