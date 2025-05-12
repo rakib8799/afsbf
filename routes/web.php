@@ -113,7 +113,7 @@ Route::prefix('news')->group(function () {
 
 Route::prefix('programs')->group(function () {
     Route::get('/', [ProgramController::class, 'index'])->name('programs.index');
-    Route::get('/{program_slug}', [ProgramController::class, 'show'])->name('programs.show');
+    // Route::get('/{programs_slug}', [ProgramController::class, 'show'])->name('programs.show');
     Route::post('/send-message', [ProgramController::class, 'sendMessage'])->name('programs.send-message');
     Route::prefix('ticket')->group(function () {
         Route::prefix('payment')->group(function () {
