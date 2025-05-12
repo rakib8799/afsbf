@@ -34,9 +34,9 @@ git fetch origin main
 git reset --hard origin/main
 
 # === STEP 4: Backup .env & Database ===
-echo "💾 Backing up .env and database..."
-cp .env ".env.backup.$(date +%F-%H-%M-%S)"
-sudo -u "$USER" $PHP artisan backup:run --only-db || echo "⚠️ Database backup skipped or failed"
+# echo "💾 Backing up .env and database..."
+# cp .env ".env.backup.$(date +%F-%H-%M-%S)"
+# sudo -u "$USER" $PHP artisan backup:run --only-db || echo "⚠️ Database backup skipped or failed"
 
 # === STEP 5: Composer Install ===
 echo "📦 Installing PHP dependencies..."
