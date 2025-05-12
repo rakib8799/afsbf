@@ -6,8 +6,8 @@ set -o pipefail
 echo "🚀 Starting Laravel, Inertia & Vue.js deployment..."
 
 # === CONFIGURATION ===
-USER="afsbf"
-SUB_DOMAIN="afsbf"
+USER="hrm"
+SUB_DOMAIN="hrm-central-admin"
 DOMAIN="mkrdev.xyz"
 APP_DIR="/home/$USER/web/$SUB_DOMAIN.$DOMAIN/public_html"
 PHP="php8.3"
@@ -36,53 +36,80 @@ rm -rf vendor/
 
 # === STEP 4: Composer Install ===
 echo "📦 Installing Composer dependencies..."
-sudo -u "$USER" composer clear-cache
-sudo -u "$USER" composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-scripts || {
+
+# Clear Composer cache to avoid old dependencies or corrupt cache
+echo "🧹 Clearing Composer cache..."
+sudo -u "$USER" composer clear-cache || {
+    echo "❌ Composer cache clear failed"
+    exit 1
+}
+
+# Run Composer install with the --no-dev flag to avoid installing unnecessary dev dependencies
+echo "📦 Installing Composer dependencies..."
+sudo -u "$USER" composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev || {
     echo "❌ Composer install failed"
     exit 1
 }
+
+# Fix permissions for vendor directory after Composer install
+echo "🔧 Fixing permissions for vendor directory..."
 chown -R "$USER":"$USER" vendor/
 chmod -R 755 vendor/
 
-# === STEP 5: Laravel Setup ===
-echo "🔐 Setting up Laravel..."
+# === STEP 5: Laravel Environment Setup ===
+echo "🔐 Setting up Laravel environment..."
 
-# Ensure .env exists
 if [ ! -f ".env" ]; then
-    echo "❌ .env file is missing!"
-    exit 1
+    echo "📄 .env not found, copying from .env.example"
+    cp .env.example .env
 fi
 
-# === STEP 6: Storage Symlink ===
+# Storage Symlink
 echo "🔗 Creating storage symlink..."
 $PHP artisan storage:link || {
     echo "❌ Failed to create storage link"
     exit 1
 }
 
-# === STEP 7: Run Migrations ===
+# Run Migrations
 echo "🛠 Running migrations..."
 $PHP artisan migrate --force || {
     echo "❌ Migrations failed"
     exit 1
 }
 
-# === STEP 8: Node.js Setup ===
-echo "📦 Installing Node.js dependencies..."
-sudo -u "$USER" npm install || {
-    echo "❌ npm install failed"
-    exit 1
-}
+# Fix file permissions for .env and directories
+echo "🔧 Fixing permissions for .env and directories..."
+chown "$USER":"www-data" .env
+chmod 664 .env
+chown -R "$USER":"www-data" storage/ bootstrap/cache/
+chmod -R 775 storage/ bootstrap/cache/
 
-echo "🏗 Building front-end assets..."
+# Generate app key only if not set
+if ! grep -q '^APP_KEY=' .env; then
+    echo "🔑 Generating app key..."
+    sudo -u "$USER" $PHP artisan key:generate
+else
+    echo "🔑 APP_KEY already exists, skipping key generation."
+fi
+
+# === STEP 6: Node Frontend Setup ===
+echo "🧹 Cleaning old node_modules..."
+rm -rf node_modules package-lock.json
+
+echo "📦 Installing Node dependencies..."
+sudo -u "$USER" npm install
+
+# Clear Vite build dir to prevent EACCES errors
+echo "🧹 Cleaning Vite build cache..."
+rm -rf public/build/assets || true
+mkdir -p public/build/assets
+chown -R "$USER":"$USER" public/build
+
+echo "⚙️ Building frontend with Vite..."
 sudo -u "$USER" npm run build || {
-    echo "❌ Frontend build failed"
+    echo "❌ Vite build failed"
     exit 1
 }
-
-# === STEP 9: Final Permissions ===
-echo "🔐 Fixing file & folder permissions..."
-find "$APP_DIR" -type f -exec chmod 644 {} \;
-find "$APP_DIR" -type d -exec chmod 755 {} \;
 
 echo "✅ Deployment completed successfully!"
