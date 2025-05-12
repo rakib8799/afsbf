@@ -37,7 +37,7 @@ rm -rf vendor/
 # === STEP 4: Composer Install ===
 echo "📦 Installing Composer dependencies..."
 sudo -u "$USER" composer clear-cache
-sudo -u "$USER" composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev || {
+sudo -u "$USER" composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --no-scripts || {
     echo "❌ Composer install failed"
     exit 1
 }
