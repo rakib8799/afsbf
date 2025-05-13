@@ -16,11 +16,24 @@ DOMAIN="mkrdev.xyz"
 APP_DIR="/home/$USER/web/$SUB_DOMAIN.$DOMAIN/public_html"
 PHP="php8.3"
 
-# === STEP 1: Navigate to App Directory ===
+# === STEP 1: Check Private repository and set ssh key for this  ===
+if [ "$IS_PRIVATE_REPO" = "true" ] && [ -n "$SSH_KEY" ]; then
+    echo "🔐 Setting up SSH agent for private GitHub repository access..."
+    eval "$(ssh-agent -s)"
+
+    SSH_KEY="${SSH_KEY/#\~/$HOME}"
+    echo "Using SSH key: $SSH_KEY"
+
+    ssh-add "$SSH_KEY"
+else
+    echo "ℹ️ Skipping SSH setup — either the repo is Public or SSH KEY is missing."
+fi
+
+# === STEP 2: Navigate to App Directory ===
 echo "📂 Changing to app directory..."
 cd "$APP_DIR" || { echo "❌ Failed to access $APP_DIR"; exit 1; }
 
-# === STEP 2: Git Pull with Safety ===
+# === STEP 3: Git Pull with Safety ===
 echo "📥 Pulling latest code..."
 if [ ! -d ".git" ]; then
     echo "❌ No Git repository found."
@@ -30,12 +43,12 @@ git config --global --add safe.directory "$APP_DIR"
 git fetch origin main
 git reset --hard origin/main
 
-# === STEP 3: Composer Dependencies ===
+# === STEP 4: Composer Dependencies ===
 echo "📦 Installing Composer dependencies..."
 composer clear-cache
 composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 
-# === STEP 4: .env and APP_KEY ===
+# === STEP 5: .env and APP_KEY ===
 echo "🔐 Checking environment file..."
 if [ ! -f ".env" ]; then
     echo "📄 .env not found. Copying from .env.example..."
@@ -48,7 +61,7 @@ if ! grep -q "^APP_KEY=base64" .env; then
     $PHP artisan key:generate
 fi
 
-# === STEP 5: Backup .env & Database ===
+# === STEP 6: Backup .env & Database ===
 echo "💾 Backing up .env and database..."
 cp .env ".env.backup.$(date +%F-%H-%M-%S)"
 
@@ -59,18 +72,8 @@ sudo chmod -R 775 "$APP_DIR/storage"
 # Run the backup
 sudo -u "$USER" $PHP artisan backup:run --only-db --disable-notifications || echo "⚠️ Database backup skipped or failed"
 
-# === STEP 6: Laravel Optimization ===
-echo "⚙️ Running Laravel optimizations..."
-$PHP artisan config:clear
-$PHP artisan cache:clear
-$PHP artisan route:clear
-$PHP artisan view:clear
-$PHP artisan config:cache
-$PHP artisan route:cache
-$PHP artisan view:cache
-
 # === STEP 7: Database Migrations ===
-echo "🧬 Running migrations..."
+# echo "🧬 Running migrations..."
 # $PHP artisan migrate --force
 
 # === STEP 8: NPM Build ===
