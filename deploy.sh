@@ -43,17 +43,17 @@ git config --global --add safe.directory "$APP_DIR"
 git fetch origin main
 git reset --hard origin/main
 
-# === STEP 4: Composer Dependencies ===
-echo "📦 Installing Composer dependencies..."
-composer clear-cache
-composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
-
-# === STEP 5: .env and APP_KEY ===
+# === STEP 4: .env and APP_KEY ===
 echo "🔐 Checking environment file..."
 if [ ! -f ".env" ]; then
     echo "📄 .env not found. Copying from .env.example..."
     cp .env.example .env
 fi
+
+# === STEP 5: Composer Dependencies ===
+echo "📦 Installing Composer dependencies..."
+composer clear-cache
+composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
 
 echo "🔑 Checking APP_KEY..."
 if ! grep -q "^APP_KEY=base64" .env; then
