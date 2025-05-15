@@ -10,7 +10,7 @@ exec 2>&1
 echo "🚀 Starting full Laravel + Inertia + Vue.js deployment..."
 
 # === CONFIGURATION ===
-USER="afsbf"
+USER="admin"
 SUB_DOMAIN="afsbf"
 DOMAIN="mkrdev.xyz"
 APP_DIR="/home/$USER/web/$SUB_DOMAIN.$DOMAIN/public_html"
